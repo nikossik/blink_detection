@@ -27,7 +27,7 @@ def calculate_blinks(video_path):
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
-    video_capture = cv2.VideoCapt ure(video_path)
+    video_capture = cv2.VideoCapture(video_path)
 
     left_close = False
     right_close = False
