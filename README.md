@@ -13,7 +13,7 @@
 
 ![EAR FORMULA](photo2.png)
 
-The eye aspect ratio will remain approximately constant when the eyes are open
+    The eye aspect ratio will remain approximately constant when the eyes are open
 
 3. The eye aspect ratio will remain approximately constant when the eyes are open
 and then will rapidly approach zero during a blink, then increase again as the eye opens.
