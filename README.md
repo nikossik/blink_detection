@@ -32,4 +32,8 @@ and then will rapidly approach zero during a blink, then increase again as the e
 5. cmake==3.22.2
 6. dlib==19.23.0
  
-
+## **Tips**:
+This method uses just the eye aspect ratio as the metric to determine if a person has blinked or not. However, due to noise in the video stream, subpar facial landmark detections, or fast changes in viewing angle, this approach could produce false-positive detections, reporting that a blink has taken place when in reality the person had not blinked.
+    To make the algorithm work well, follow these tips:
+        1. Try to record videos with good lighting!
+        
