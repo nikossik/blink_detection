@@ -10,5 +10,7 @@
     4. Determine if the person is blinking.
 
 2. **EAR** (Eye Aspect Ratio) formula:
+
 ![EAR FORMULA](photo2.png)
+
 The eye aspect ratio will remain approximately constant when the eyes are open
