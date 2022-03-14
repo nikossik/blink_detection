@@ -20,7 +20,7 @@ and then will rapidly approach zero during a blink, then increase again as the e
 
 4. 68 coordinates are detected for the given face by the dlib's face detector.
 
-5. We use coordinates only for eyes.
+5. We use 12 coordinates only for eyes.
 
 6. On each frame, the detector finds the eyes by coordinates and counts the EAR, after which we compare the EAR of each eye with the threshhold and understand whether it is open or closed.
 
