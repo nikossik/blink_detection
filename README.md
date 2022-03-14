@@ -37,4 +37,4 @@ This method uses just the eye aspect ratio as the metric to determine if a perso
 
 ### To make the algorithm work well, follow these tips:  
         1. Try to record videos with good lighting!
-        
+        2. Try to keep the distance between the eyes and the camera (not too close and not too far)
