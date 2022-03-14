@@ -14,3 +14,12 @@
 ![EAR FORMULA](photo2.png)
 
 The eye aspect ratio will remain approximately constant when the eyes are open
+
+3. The eye aspect ratio will remain approximately constant when the eyes are open
+and then will rapidly approach zero during a blink, then increase again as the eye opens.
+
+4. 68 coordinates are detected for the given face by the dlib's face detector.
+
+5. We use coordinates only for eyes.
+
+6. On each frame, the detector finds the eyes by coordinates and counts the EAR, after which we compare the EAR of each eye with the thrash hold and understand whether it is open or closed.
