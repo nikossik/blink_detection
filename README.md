@@ -1,1 +1,3 @@
-# blink_detection
+# Blink Detection
+
+![EYE](photo1.jpeg)
