@@ -20,7 +20,7 @@ def eye_aspect_ratio(eye: np.array) -> float:
     return ear
 
 
-def calculate_blinks(video_path: str, detector: dlib.fhog_object_detector, predictor: dlib.shape_predictor) -> tuple:
+def calculate_blinks(video_path: str, detector: dlib.fhog_object_detector, predictor: dlib.shape_predictor, th_close: float=0.21, th_open: float=0.26) -> tuple:
     """
     This function counts left blinks and right blinks on the video
 
@@ -32,8 +32,6 @@ def calculate_blinks(video_path: str, detector: dlib.fhog_object_detector, predi
     # params
     right_eye_points = list(range(36, 42))
     left_eye_points = list(range(42, 48))
-    th_close = 0.21
-    th_open = 0.26
     total_left = 0
     total_right = 0
 
