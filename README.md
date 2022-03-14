@@ -1,6 +1,6 @@
 # Blink Detection using dlib and OpenCV
 
-![EYE](photo1.jpeg)
+![EYE](https://miro.medium.com/max/1400/1*S6XpUsffxRrSBTH6KGkJhg.jpeg)
 
 ## **Key Points**
 1. Steps involved:
@@ -11,7 +11,7 @@
 
 2. **EAR** (Eye Aspect Ratio) formula:
 
-![EAR FORMULA](photo2.png)
+![EAR FORMULA](https://github.com/Practical-CV/EYE-BLINK-DETECTION-WITH-OPENCV-AND-DLIB/blob/master/media/blink_detection_equation.png?raw=true)
 
     The eye aspect ratio will remain approximately constant when the eyes are open
 
