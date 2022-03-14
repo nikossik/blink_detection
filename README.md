@@ -23,3 +23,13 @@ and then will rapidly approach zero during a blink, then increase again as the e
 5. We use coordinates only for eyes.
 
 6. On each frame, the detector finds the eyes by coordinates and counts the EAR, after which we compare the EAR of each eye with the thrash hold and understand whether it is open or closed.
+
+## **Requirements**:
+1. pyTelegramBotAPI==4.4.0
+2. numpy==1.17.2
+3. opencv-python==4.5.3.56
+4. scipy==1.4.1
+5. cmake==3.22.2
+6. dlib==19.23.0
+ 
+
