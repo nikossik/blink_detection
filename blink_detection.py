@@ -11,6 +11,7 @@ def eye_aspect_ratio(eye: np.array) -> float:
     :param eye: eye coordinates
     :return: degree of eye openness
     """
+
     a = dist.euclidean(eye[1], eye[5])
     b = dist.euclidean(eye[2], eye[4])
     c = dist.euclidean(eye[0], eye[3])
@@ -20,25 +21,25 @@ def eye_aspect_ratio(eye: np.array) -> float:
     return ear
 
 
-def calculate_blinks(video_path: str, detector: dlib.fhog_object_detector, predictor: dlib.shape_predictor, th_close: float=0.21, th_open: float=0.26) -> tuple:
+def calculate_ears(video_path: str, detector: dlib.fhog_object_detector, predictor: dlib.shape_predictor) -> tuple:
     """
-    This function counts left blinks and right blinks on the video
+    This function calculates left and right ears
 
     :param video_path: path to video
     :param detector: detector nn
     :param predictor: predictor nn
-    :return: left blinks and right blinks count
+    :return: left ears and right ears
     """
+
     # params
     right_eye_points = list(range(36, 42))
     left_eye_points = list(range(42, 48))
-    total_left = 0
-    total_right = 0
+
+    left_ears = []
+    right_ears = []
 
     video_capture = cv2.VideoCapture(video_path)  # open video
 
-    left_close = False
-    right_close = False
     while video_capture.isOpened():  # read video by frames
         ret, frame = video_capture.read()
 
@@ -52,26 +53,52 @@ def calculate_blinks(video_path: str, detector: dlib.fhog_object_detector, predi
                 left_eye = landmarks[right_eye_points]  # left eye cords
                 right_eye = landmarks[left_eye_points]  # right eye cords
 
-                ear_left = eye_aspect_ratio(left_eye)   # left eye degree
+                ear_left = eye_aspect_ratio(left_eye)  # left eye degree
                 ear_right = eye_aspect_ratio(right_eye)  # right eye degree
 
-                # count blinks
-                if ear_left < th_close and not left_close:
-                    left_close = True
+                left_ears.append(ear_left)
+                right_ears.append(ear_right)
 
-                elif ear_left >= th_open and left_close:
-                    total_left += 1
-                    left_close = False
-
-                if ear_right < th_close and not right_close:
-                    right_close = True
-
-                elif ear_right >= th_open and right_close:
-                    total_right += 1
-                    right_close = False
         else:
             break
 
     video_capture.release()  # close video
 
-    return total_left, total_right
+    return left_ears, right_ears
+
+
+def calculate_blinks(left_ears: list, right_ears: list, th_close: float = 0.21, th_open: float = 0.26) -> tuple:
+    """
+    This function counts left blinks and right blinks on the video
+
+    :param left_ears: left ears
+    :param right_ears: right ears
+    :param th_close: threshold for close eye
+    :param th_open: threshold for open eye
+    :return: left and right blinks
+    """
+
+    left_blinks = 0
+    right_blinks = 0
+
+    # calculate for left eye
+    eye_close = False
+    for ear in left_ears:
+        if ear < th_close and not eye_close:
+            eye_close = True
+
+        elif ear >= th_open and eye_close:
+            eye_close = False
+            left_blinks += 1
+
+    # calculate for right eye
+    eye_close = False
+    for ear in right_ears:
+        if ear < th_close and not eye_close:
+            eye_close = True
+
+        elif ear >= th_open and eye_close:
+            eye_close = False
+            right_blinks += 1
+
+    return left_blinks, right_blinks
