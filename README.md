@@ -37,5 +37,6 @@ and then will rapidly approach zero during a blink, then increase again as the e
 This method uses just the eye aspect ratio as the metric to determine if a person has blinked or not. However, due to noise in the video stream, subpar facial landmark detections, or fast changes in viewing angle, this approach could produce false-positive detections, reporting that a blink has taken place when in reality the person had not blinked.
 
 ### To make the algorithm work well, follow these tips:  
-        1. Try to record videos with good lighting!
-        2. Try to keep the distance between the eyes and the camera (not too close and not too far)
+        1. Only for MacOS and Linux
+        2. Try to record videos with good lighting!
+        3. Try to keep the distance between the eyes and the camera (not too close and not too far)
