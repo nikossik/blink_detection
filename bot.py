@@ -39,7 +39,7 @@ def handle_docs_photo(message):
         downloaded_file = bot.download_file(file_info.file_path)
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        src = dir_path + '/video/' + message.video.file_name
+        src = f"{dir_path}/video/{file_info.file_unique_id}.{file_info.file_path.split('.')[-1]}"
 
         with open(src, 'wb') as new_file:
             new_file.write(downloaded_file)
