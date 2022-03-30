@@ -47,7 +47,8 @@ def handle_docs_photo(message):
         bot.reply_to(message, "Пожалуй, я сохраню это")
 
         # calculate blinks and reply
-        left_blinks, right_blinks = blink_detection.calculate_blinks(src, detector, predictor)
+        ears = blink_detection.calculate_ears(src, detector, predictor)
+        left_blinks, right_blinks = blink_detection.calculate_blinks(*ears)
         bot.send_message(message.chat.id, f'Левым глазом ты моргнул {left_blinks} раз, а правым {right_blinks} раз')
 
 
